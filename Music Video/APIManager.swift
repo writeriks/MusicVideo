@@ -10,7 +10,7 @@ import Foundation
 
 class APIManager {
     
-    func loadData(urlString:String, completion:(result:String) -> Void){
+    func loadData(urlString:String, completion:[Videos] -> Void){
     
         let config = NSURLSessionConfiguration.ephemeralSessionConfiguration()
         
@@ -22,32 +22,38 @@ class APIManager {
         (data, response, error) -> Void in
             
             if error != nil {
-                dispatch_async(dispatch_get_main_queue()){  // hata internet bağlantı hatası
-                completion(result: (error!.localizedDescription))
-                }
+                
+                    print(error!.localizedDescription)
+                
             } else{
-                print(data) // data yı log da göster
                 /* 
                 aşağıda daha önce getirilen NSData Json verisine çevriliyor bunun için do catch bloğu kullanılıyor
                 */
                 do{
-                    if let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
-                        as? JSONDictionary{  //[String: AnyObject] //gelen objeyi json serialization yap
-                        print(json)
-                            let priority = DISPATCH_QUEUE_PRIORITY_HIGH
-                            dispatch_async(dispatch_get_global_queue(priority, 0)){ //global queue
-                                dispatch_async(dispatch_get_main_queue()){
-                                completion(result: "JSon Serialization Succesfull")
+                    if let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as? JSONDictionary,  //[String: AnyObject] //gelen objeyi json serialization yap
+                            feed = json["feed"] as? JSONDictionary,
+                            entries = feed["entry"] as? JSONArray {
+                            
+                                var videos = [Videos]()
+                                for entry in entries{
+                                    let entry = Videos(data: entry as! JSONDictionary)
+                                    videos.append(entry)
+                                }
+                                let i = videos.count
+                                print("iTunes Api Manager - total count ----> \(i)")
+                                print("")
+                                let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+                                dispatch_async(dispatch_get_global_queue(priority, 0)){
+                                    dispatch_async(dispatch_get_main_queue()){
+                                    completion(videos)
                                 }
                             }
                     }
                 }catch{
-                    dispatch_async(dispatch_get_main_queue()){
-                        completion(result: "error in Json Serialization")
+                        print("error in Json Serialization")
                     }
                 }
             }
-        }
         task.resume()
     }
 }
