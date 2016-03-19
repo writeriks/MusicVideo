@@ -27,7 +27,14 @@ class APIManager {
                 
             } else{
                 /* 
-                aşağıda daha önce getirilen NSData Json verisine çevriliyor bunun için do catch bloğu kullanılıyor
+                aşağıda daha önce getirilen NSData Json verisine çevriliyor bunun için do catch bloğu kullanılıyor.... 
+                json datayı açmak için;
+                json objeyi kontrol et
+                obje süslü parantez ise json dictionary değilse json array,
+                sonra içindeki objeyi kontrol et json array veya json dictionary
+                sınıftaki objeye gelene kadar bu işleme devam et
+                daha sonra sınıftan bir instance oluştur.
+                ulaşılan son objede dön ve instance ın içine at
                 */
                 do{
                     if let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as? JSONDictionary,  //[String: AnyObject] //gelen objeyi json serialization yap
