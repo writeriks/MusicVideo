@@ -36,7 +36,7 @@ class APIManager {
                             
                                 var videos = [Videos]()
                                 for entry in entries{
-                                    let entry = Videos(data: entry as! JSONDictionary)
+                                    let entry = Videos(data: entry as! JSONDictionary)// Videos class ındaki init metodunun içine etryleri atıp entrynin içine attı
                                     videos.append(entry)
                                 }
                                 let i = videos.count

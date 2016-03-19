@@ -67,7 +67,7 @@ class Videos {
             vName = name["label"] as? String{
             self._vName = vName
         }else{
-            _vName = ""
+        _vName = ""
         }
         
         if let rights = data["rights"] as? JSONDictionary,
@@ -98,8 +98,6 @@ class Videos {
         }else{
             _vArtist = ""
         }
-        
-        
         
         if let video = data["link"] as? JSONArray,
             vUrl = video[1] as? JSONDictionary,
@@ -157,4 +155,5 @@ class Videos {
             _vReleaseDte = ""
         }
     }
+    
 }
