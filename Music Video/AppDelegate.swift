@@ -38,7 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func statusChangedWithReachability(currentReachabilityStatus: Reachability) {
         
-        
         let networkStatus: NetworkStatus = currentReachabilityStatus.currentReachabilityStatus()
         
         switch networkStatus.rawValue {
