@@ -10,7 +10,7 @@ import UIKit
 
 var reachability : Reachability?
 
-var reachabilityStatus = WIFI
+var reachabilityStatus = " "
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged", name: kReachabilityChangedNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: kReachabilityChangedNotification, object: nil)
+        
         
         internetCheck = Reachability.reachabilityForInternetConnection()
         internetCheck?.startNotifier()
@@ -29,21 +30,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func reachabilityChanged(notification : NSNotification){
+    func reachabilityChanged(notification: NSNotification) {
         reachability = notification.object as? Reachability
         statusChangedWithReachability(reachability!)
+        
     }
     
-    func statusChangedWithReachability(currentReachabilityStatus : Reachability){
+    func statusChangedWithReachability(currentReachabilityStatus: Reachability) {
+        
+        
         let networkStatus: NetworkStatus = currentReachabilityStatus.currentReachabilityStatus()
         
-        switch networkStatus.rawValue{
+        switch networkStatus.rawValue {
         case NotReachable.rawValue : reachabilityStatus = NOACCESS
         case ReachableViaWiFi.rawValue : reachabilityStatus = WIFI
         case ReachableViaWWAN.rawValue : reachabilityStatus = WWAN
         default:return
         }
+        
         NSNotificationCenter.defaultCenter().postNotificationName("ReachStatusChanged", object: nil)
+        
     }
     
     func applicationWillResignActive(application: UIApplication) {
@@ -66,6 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: kReachabilityChangedNotification, object: nil)
+        
     }
 
 
