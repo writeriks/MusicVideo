@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Music VideoTVC-->
@@ -14,29 +15,55 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="OsD-iX-18H" detailTextLabel="GiA-Oc-24n" style="IBUITableViewCellStyleSubtitle" id="JVS-d2-G2h">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="132" id="JVS-d2-G2h" customClass="MusicVideoTableViewCell" customModule="Music_Video" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="132"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JVS-d2-G2h" id="vz1-Oz-CqB">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="131"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OsD-iX-18H">
-                                            <rect key="frame" x="15" y="5" width="32" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XZC-PP-kE4">
+                                            <rect key="frame" x="8" y="8" width="150" height="115"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="150" id="Tbz-KO-cW9"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rank" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASO-tP-Har">
+                                            <rect key="frame" x="166" y="8" width="42" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="42" id="JxV-e6-FAZ"/>
+                                                <constraint firstAttribute="height" constant="22" id="Yug-gn-vxF"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GiA-Oc-24n">
-                                            <rect key="frame" x="15" y="25" width="41" height="14"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MusicTitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewm-fa-Cwt">
+                                            <rect key="frame" x="166" y="38" width="426" height="85"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="XZC-PP-kE4" firstAttribute="top" secondItem="ASO-tP-Har" secondAttribute="top" id="31D-Gd-TXv"/>
+                                        <constraint firstItem="ewm-fa-Cwt" firstAttribute="leading" secondItem="ASO-tP-Har" secondAttribute="leading" id="JKf-fL-Dnz"/>
+                                        <constraint firstItem="XZC-PP-kE4" firstAttribute="leading" secondItem="vz1-Oz-CqB" secondAttribute="leadingMargin" id="L1V-uh-NIT"/>
+                                        <constraint firstItem="ewm-fa-Cwt" firstAttribute="top" secondItem="ASO-tP-Har" secondAttribute="bottom" constant="8" symbolic="YES" id="Tud-2T-290"/>
+                                        <constraint firstItem="ewm-fa-Cwt" firstAttribute="trailing" secondItem="vz1-Oz-CqB" secondAttribute="trailingMargin" id="dSY-Ht-xHd"/>
+                                        <constraint firstItem="ewm-fa-Cwt" firstAttribute="bottom" secondItem="XZC-PP-kE4" secondAttribute="bottom" id="f6R-MV-SjZ"/>
+                                        <constraint firstItem="ASO-tP-Har" firstAttribute="top" secondItem="vz1-Oz-CqB" secondAttribute="topMargin" id="kvG-iy-MGH"/>
+                                        <constraint firstItem="ASO-tP-Har" firstAttribute="leading" secondItem="XZC-PP-kE4" secondAttribute="trailing" constant="8" symbolic="YES" id="lN3-8m-wFc"/>
+                                        <constraint firstItem="ewm-fa-Cwt" firstAttribute="bottom" secondItem="vz1-Oz-CqB" secondAttribute="bottomMargin" id="uvr-ba-bxG"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="musicImage" destination="XZC-PP-kE4" id="FQq-Ne-mPl"/>
+                                    <outlet property="musicTitle" destination="ewm-fa-Cwt" id="H2S-TN-xH9"/>
+                                    <outlet property="rank" destination="ASO-tP-Har" id="tyD-qb-hyd"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
