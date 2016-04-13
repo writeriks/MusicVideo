@@ -17,6 +17,7 @@ class MusicVideoTVC: UITableViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityStatusChanged", name: "ReachStatusChanged", object: nil)
         reachabilityStatusChanged()
+        
     }
     
     func didLoadData(videos:[Videos]){
@@ -113,9 +114,9 @@ class MusicVideoTVC: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(storyboard.cellReuseIdentifier, forIndexPath: indexPath) as! MusicVideoTableViewCell
-
+        
         cell.video = videos[indexPath.row]
-
+        
 
         return cell
     }
