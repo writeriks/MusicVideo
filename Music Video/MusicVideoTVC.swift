@@ -16,8 +16,15 @@ class MusicVideoTVC: UITableViewController {
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityStatusChanged", name: "ReachStatusChanged", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "prefferedFontChange", name: UIContentSizeCategoryDidChangeNotification, object: nil)
+        
         reachabilityStatusChanged()
         
+    }
+    
+    func prefferedFontChange(){
+        print("Preferred font changed")
     }
     
     func didLoadData(videos:[Videos]){
