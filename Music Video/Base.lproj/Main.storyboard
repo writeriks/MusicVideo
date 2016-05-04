@@ -133,15 +133,19 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="SXc-tY-bsG" firstAttribute="centerX" secondItem="ItX-eb-5Gj" secondAttribute="centerX" id="00h-b7-shB"/>
                             <constraint firstItem="MFX-hg-A6h" firstAttribute="centerX" secondItem="SXc-tY-bsG" secondAttribute="centerX" id="0Fp-4t-5Lr"/>
                             <constraint firstItem="MFX-hg-A6h" firstAttribute="top" secondItem="2Rh-Tv-Cjb" secondAttribute="bottom" id="2Gc-ZC-JY8"/>
+                            <constraint firstItem="uc4-NA-sQ6" firstAttribute="top" secondItem="SXc-tY-bsG" secondAttribute="bottom" constant="8" symbolic="YES" id="7ax-KB-PNK"/>
                             <constraint firstItem="MFX-hg-A6h" firstAttribute="centerX" secondItem="ItX-eb-5Gj" secondAttribute="centerX" id="DaD-2h-A0P"/>
                             <constraint firstItem="v9D-XQ-nUm" firstAttribute="baseline" secondItem="PzQ-eN-Xdl" secondAttribute="baseline" id="FyG-U4-18z"/>
                             <constraint firstItem="SXc-tY-bsG" firstAttribute="leading" secondItem="7JH-eD-wbP" secondAttribute="leading" id="J6c-ul-lT5"/>
                             <constraint firstItem="7JH-eD-wbP" firstAttribute="top" secondItem="PzQ-eN-Xdl" secondAttribute="bottom" constant="8" symbolic="YES" id="JdP-EC-qyT"/>
+                            <constraint firstAttribute="trailing" secondItem="SXc-tY-bsG" secondAttribute="trailing" id="Qfo-FX-yE3"/>
                             <constraint firstItem="v9D-XQ-nUm" firstAttribute="trailing" secondItem="ItX-eb-5Gj" secondAttribute="trailingMargin" id="Tz1-hD-xzg"/>
                             <constraint firstItem="MFX-hg-A6h" firstAttribute="leading" secondItem="ItX-eb-5Gj" secondAttribute="leadingMargin" constant="-13" id="XgI-2X-hYQ"/>
                             <constraint firstItem="PzQ-eN-Xdl" firstAttribute="top" secondItem="SXc-tY-bsG" secondAttribute="bottom" constant="1" id="b2O-3F-DLJ"/>
+                            <constraint firstItem="SXc-tY-bsG" firstAttribute="top" secondItem="2Rh-Tv-Cjb" secondAttribute="bottom" constant="8" symbolic="YES" id="bPp-LR-RQ7"/>
                             <constraint firstItem="7JH-eD-wbP" firstAttribute="bottom" secondItem="uc4-NA-sQ6" secondAttribute="top" id="hGa-bn-gER"/>
                             <constraint firstItem="SXc-tY-bsG" firstAttribute="trailing" secondItem="7JH-eD-wbP" secondAttribute="trailing" id="rnj-F9-1Bw"/>
                             <constraint firstItem="SXc-tY-bsG" firstAttribute="top" secondItem="2Rh-Tv-Cjb" secondAttribute="bottom" constant="68" id="sqW-hY-vNK"/>
@@ -149,6 +153,43 @@
                             <constraint firstItem="v9D-XQ-nUm" firstAttribute="centerY" secondItem="PzQ-eN-Xdl" secondAttribute="centerY" id="wQR-e8-QAJ"/>
                             <constraint firstAttribute="trailing" secondItem="SXc-tY-bsG" secondAttribute="trailing" id="zWF-fT-jB2"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="00h-b7-shB"/>
+                                <exclude reference="Qfo-FX-yE3"/>
+                                <exclude reference="bPp-LR-RQ7"/>
+                                <exclude reference="7ax-KB-PNK"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="subviews">
+                                <exclude reference="PzQ-eN-Xdl"/>
+                                <exclude reference="v9D-XQ-nUm"/>
+                                <exclude reference="7JH-eD-wbP"/>
+                                <exclude reference="MFX-hg-A6h"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="0Fp-4t-5Lr"/>
+                                <exclude reference="2Gc-ZC-JY8"/>
+                                <exclude reference="DaD-2h-A0P"/>
+                                <exclude reference="XgI-2X-hYQ"/>
+                                <exclude reference="b2O-3F-DLJ"/>
+                                <exclude reference="ugy-n9-hbx"/>
+                                <exclude reference="JdP-EC-qyT"/>
+                                <exclude reference="hGa-bn-gER"/>
+                                <include reference="00h-b7-shB"/>
+                                <exclude reference="J6c-ul-lT5"/>
+                                <include reference="Qfo-FX-yE3"/>
+                                <include reference="bPp-LR-RQ7"/>
+                                <exclude reference="rnj-F9-1Bw"/>
+                                <exclude reference="sqW-hY-vNK"/>
+                                <exclude reference="zWF-fT-jB2"/>
+                                <include reference="7ax-KB-PNK"/>
+                                <exclude reference="FyG-U4-18z"/>
+                                <exclude reference="Tz1-hD-xzg"/>
+                                <exclude reference="wQR-e8-QAJ"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems>
                         <barButtonItem systemItem="play" id="Z0d-rc-arR">
@@ -169,7 +210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="reS-4N-6fk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2241" y="322"/>
+            <point key="canvasLocation" x="2241" y="321"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Trh-hJ-SzJ">
