@@ -23,7 +23,8 @@ class SettingsTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "Settings"
+        tableView.separatorStyle = .None
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "prefferedFontChange", name: UIContentSizeCategoryDidChangeNotification, object: nil)
 
         tableView.alwaysBounceVertical = false

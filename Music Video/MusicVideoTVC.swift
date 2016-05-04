@@ -14,7 +14,7 @@ class MusicVideoTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "Music Videos"
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityStatusChanged", name: "ReachStatusChanged", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "prefferedFontChange", name: UIContentSizeCategoryDidChangeNotification, object: nil)
