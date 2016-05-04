@@ -80,13 +80,9 @@ class MusicVideoTVC: UITableViewController {
             if videos.count > 0 {
                 print("do not refresh API")
             } else {
-                runAPI()    
-                
+                runAPI()
             }
-            
         }
-        
-
     }
     
     // MARK: - Call API
