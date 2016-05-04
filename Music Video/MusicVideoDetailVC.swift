@@ -33,17 +33,19 @@ class MusicVideoDetailVC: UIViewController {
         else{
             imageView.image = UIImage(named: "imageNotAvailable")
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "prefferedFontChange", name: UIContentSizeCategoryDidChangeNotification, object: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func prefferedFontChange(){
+        print("preferred font changed")
+        vName.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+        vPrice.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+        vGenre.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+        vRights.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
     }
-    */
-
+    
+    deinit{
+        NSNotificationCenter.defaultCenter().removeObserver(self, name:UIContentSizeCategoryDidChangeNotification, object: nil)
+    }
 }
