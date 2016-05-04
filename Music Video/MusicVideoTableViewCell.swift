@@ -18,12 +18,8 @@ class MusicVideoTableViewCell: UITableViewCell {
     
     
     @IBOutlet var musicImage: UIImageView!
-    
     @IBOutlet var rank: UILabel!
-    
-    
     @IBOutlet var musicTitle: UILabel!
-    
     
     func updateCell(){
         musicTitle.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
@@ -60,6 +56,4 @@ class MusicVideoTableViewCell: UITableViewCell {
         }
 
     }
-    
-    
 }

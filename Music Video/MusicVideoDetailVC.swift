@@ -10,15 +10,29 @@ import UIKit
 
 class MusicVideoDetailVC: UIViewController {
 
+    var videos:Videos!
+    
+    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var vName: UILabel!
+    @IBOutlet var vGenre: UILabel!
+    @IBOutlet var vPrice: UILabel!
+    @IBOutlet var vRights: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        title = videos.vArtist
+        vName.text = videos.vName
+        vPrice.text = videos.vPrice
+        vGenre.text = videos.vGenre
+        vRights.text = videos.vRights
+        if videos.vImageData != nil {
+            imageView.image = UIImage(data: videos.vImageData!)
+        }
+        else{
+            imageView.image = UIImage(named: "imageNotAvailable")
+        }
     }
     
 

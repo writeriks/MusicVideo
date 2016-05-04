@@ -92,7 +92,7 @@ class Videos {
             _vImageUrl = ""
         }
         
-        if let artist = data["artist"] as? JSONDictionary,
+        if let artist = data["im:artist"] as? JSONDictionary,
             vArtist = artist["label"] as? String{
             self._vArtist = vArtist
         }else{
