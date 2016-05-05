@@ -52,6 +52,9 @@ class SettingsTVC: UITableViewController {
         
     }
 
+    
+    
+    
     @IBAction func valueChanged(sender: AnyObject) {// slider slide change to apiCnt number
         
         let defaults = NSUserDefaults.standardUserDefaults()

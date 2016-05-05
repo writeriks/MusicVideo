@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class MusicVideoDetailVC: UIViewController {
 
@@ -35,6 +37,19 @@ class MusicVideoDetailVC: UIViewController {
         }
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "prefferedFontChange", name: UIContentSizeCategoryDidChangeNotification, object: nil)
+    }
+    
+    
+    @IBAction func playVideo(sender: UIBarButtonItem) {
+        
+        let url = NSURL(string: videos.vVideoUrl)!
+        let player = AVPlayer(URL: url)
+        let playerVievController = AVPlayerViewController()
+        playerVievController.player = player
+        self.presentViewController(playerVievController, animated: true){
+            playerVievController.player?.play()
+        }
+        
     }
     
     func prefferedFontChange(){
