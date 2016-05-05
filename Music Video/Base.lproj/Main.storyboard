@@ -181,10 +181,6 @@
                                 <exclude reference="2Gc-ZC-JY8"/>
                                 <exclude reference="DaD-2h-A0P"/>
                                 <exclude reference="XgI-2X-hYQ"/>
-                                <exclude reference="b2O-3F-DLJ"/>
-                                <exclude reference="ugy-n9-hbx"/>
-                                <exclude reference="JdP-EC-qyT"/>
-                                <exclude reference="hGa-bn-gER"/>
                                 <include reference="00h-b7-shB"/>
                                 <exclude reference="J6c-ul-lT5"/>
                                 <include reference="Qfo-FX-yE3"/>
@@ -192,6 +188,10 @@
                                 <exclude reference="rnj-F9-1Bw"/>
                                 <exclude reference="sqW-hY-vNK"/>
                                 <exclude reference="zWF-fT-jB2"/>
+                                <exclude reference="b2O-3F-DLJ"/>
+                                <exclude reference="ugy-n9-hbx"/>
+                                <exclude reference="JdP-EC-qyT"/>
+                                <exclude reference="hGa-bn-gER"/>
                                 <include reference="7ax-KB-PNK"/>
                                 <exclude reference="FyG-U4-18z"/>
                                 <exclude reference="Tz1-hD-xzg"/>
@@ -286,8 +286,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="89"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4TO-Mb-nv9">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4TO-Mb-nv9">
                                                     <rect key="frame" x="535" y="26" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="touchIdSec:" destination="rwH-lo-3pK" eventType="valueChanged" id="Lla-w2-pZh"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhx-4h-oFV">
                                                     <rect key="frame" x="8" y="31" width="121" height="21"/>
@@ -315,7 +318,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="89"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8vI-Dq-dtr">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8vI-Dq-dtr">
                                                     <rect key="frame" x="535" y="26" width="51" height="31"/>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best Image Quality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsr-cD-aTW">
@@ -372,8 +375,11 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="NEb-Cy-Jvb">
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="10" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="NEb-Cy-Jvb">
                                                     <rect key="frame" x="46" y="27" width="509" height="31"/>
+                                                    <connections>
+                                                        <action selector="valueChanged:" destination="rwH-lo-3pK" eventType="valueChanged" id="cAI-Kk-SKl"/>
+                                                    </connections>
                                                 </slider>
                                             </subviews>
                                             <constraints>
