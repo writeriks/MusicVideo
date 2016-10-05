@@ -22,17 +22,17 @@ class SettingsTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Settings"
-        tableView.separatorStyle = .None
+        tableView.separatorStyle = .none
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "prefferedFontChange", name: UIContentSizeCategoryDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SettingsTVC.prefferedFontChange), name: NSNotification.Name.UIContentSizeCategoryDidChange, object: nil)
 
         tableView.alwaysBounceVertical = false
         
-        touchID.on = NSUserDefaults.standardUserDefaults().boolForKey("SecSetting")
+        touchID.isOn = UserDefaults.standard.bool(forKey: "SecSetting")
         
-        if(NSUserDefaults.standardUserDefaults().objectForKey("APICNT") != nil){
+        if(UserDefaults.standard.object(forKey: "APICNT") != nil){
             
-            let theValue = NSUserDefaults.standardUserDefaults().objectForKey("APICNT") as! Int
+            let theValue = UserDefaults.standard.object(forKey: "APICNT") as! Int
             APICnt.text = "\(theValue)"
             sliderCnt.value = Float(theValue)
             
@@ -40,14 +40,14 @@ class SettingsTVC: UITableViewController {
         
     }
    
-    @IBAction func touchIdSec(sender: UISwitch) {
+    @IBAction func touchIdSec(_ sender: UISwitch) {
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if touchID.on{
-            defaults.setBool(touchID.on, forKey: "SecSetting")
+        let defaults = UserDefaults.standard
+        if touchID.isOn{
+            defaults.set(touchID.isOn, forKey: "SecSetting")
         }
         else{
-            defaults.setBool(false, forKey: "SecSetting")
+            defaults.set(false, forKey: "SecSetting")
         }
         
     }
@@ -55,24 +55,24 @@ class SettingsTVC: UITableViewController {
     
     
     
-    @IBAction func valueChanged(sender: AnyObject) {// slider slide change to apiCnt number
+    @IBAction func valueChanged(_ sender: AnyObject) {// slider slide change to apiCnt number
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject(Int(sliderCnt.value), forKey: "APICNT") // slider value type is float so change it to int
+        let defaults = UserDefaults.standard
+        defaults.set(Int(sliderCnt.value), forKey: "APICNT") // slider value type is float so change it to int
         APICnt.text = ("\(Int(sliderCnt.value))")  //ToString()
         
     }
     
     
     func prefferedFontChange(){
-        aboutDisplay.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
-        feedbackDisplay.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
-        securityDisplay.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
-        bestImageQualityDisplay.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
-        APICnt.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+        aboutDisplay.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
+        feedbackDisplay.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
+        securityDisplay.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
+        bestImageQualityDisplay.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
+        APICnt.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
     }
     
     deinit{
-        NSNotificationCenter.defaultCenter().removeObserver(self, name:UIContentSizeCategoryDidChangeNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name:NSNotification.Name.UIContentSizeCategoryDidChange, object: nil)
     }
 }

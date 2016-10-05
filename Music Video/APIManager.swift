@@ -10,15 +10,15 @@ import Foundation
 
 class APIManager {
     
-    func loadData(urlString:String, completion:[Videos] -> Void){
+    func loadData(_ urlString:String, completion:@escaping ([Videos]) -> Void){
     
-        let config = NSURLSessionConfiguration.ephemeralSessionConfiguration()
+        let config = URLSessionConfiguration.ephemeral
         
-        let session = NSURLSession(configuration: config)
+        let session = URLSession(configuration: config)
         
-        let url = NSURL(string: urlString)!  // url i al
+        let url = URL(string: urlString)!  // url i al
         
-        let task = session.dataTaskWithURL(url) { // url ile task oluştur içinde data, response ve error olsun
+        let task = session.dataTask(with: url, completionHandler: { // url ile task oluştur içinde data, response ve error olsun
         (data, response, error) -> Void in
             
             if error != nil {
@@ -37,12 +37,16 @@ class APIManager {
                 ulaşılan son objede dön ve instance ın içine at
                 */
                 do{
-                    if let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as? JSONDictionary,  //[String: AnyObject] //gelen objeyi json serialization yap
-                            feed = json["feed"] as? JSONDictionary,
-                            entries = feed["entry"] as? JSONArray {
-                            
+                    if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? JSONDictionary,  //[String: AnyObject] //gelen objeyi json serialization yap
+                        
+                            let feed = json["feed"] as? JSONDictionary,
+                            let entries = feed["entry"] as? JSONArray {
+                        
+                            print(feed)
+                            print(entries)
                                 var videos = [Videos]()
-                                for (index, entry) in entries.enumerate(){
+                                for (index, entry) in entries.enumerated(){
+                                    print(entry)
                                     let entry = Videos(data: entry as! JSONDictionary)// Videos class ındaki init metodunun içine etryleri atıp entrynin içine attı
                                     entry.vRank = index + 1
                                     videos.append(entry)
@@ -50,9 +54,9 @@ class APIManager {
                                 let i = videos.count
                                 print("iTunes Api Manager - total count ----> \(i)")
                                 print("")
-                                let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-                                dispatch_async(dispatch_get_global_queue(priority, 0)){
-                                    dispatch_async(dispatch_get_main_queue()){
+                                let priority = DispatchQueue.GlobalQueuePriority.default
+                                DispatchQueue.global(priority: priority).async{
+                                    DispatchQueue.main.async{
                                     completion(videos)
                                 }
                             }
@@ -61,7 +65,7 @@ class APIManager {
                         print("error in Json Serialization")
                     }
                 }
-            }
+            }) 
         task.resume()
     }
 }

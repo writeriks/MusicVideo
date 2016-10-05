@@ -30,23 +30,23 @@ class MusicVideoDetailVC: UIViewController {
         vGenre.text = videos.vGenre
         vRights.text = videos.vRights
         if videos.vImageData != nil {
-            imageView.image = UIImage(data: videos.vImageData!)
+            imageView.image = UIImage(data: videos.vImageData! as Data)
         }
         else{
             imageView.image = UIImage(named: "imageNotAvailable")
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "prefferedFontChange", name: UIContentSizeCategoryDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MusicVideoDetailVC.prefferedFontChange), name: NSNotification.Name.UIContentSizeCategoryDidChange, object: nil)
     }
     
     
-    @IBAction func playVideo(sender: UIBarButtonItem) {
+    @IBAction func playVideo(_ sender: UIBarButtonItem) {
         
-        let url = NSURL(string: videos.vVideoUrl)!
-        let player = AVPlayer(URL: url)
+        let url = URL(string: videos.vVideoUrl)!
+        let player = AVPlayer(url: url)
         let playerVievController = AVPlayerViewController()
         playerVievController.player = player
-        self.presentViewController(playerVievController, animated: true){
+        self.present(playerVievController, animated: true){
             playerVievController.player?.play()
         }
         
@@ -54,13 +54,13 @@ class MusicVideoDetailVC: UIViewController {
     
     func prefferedFontChange(){
         print("preferred font changed")
-        vName.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
-        vPrice.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
-        vGenre.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
-        vRights.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+        vName.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
+        vPrice.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
+        vGenre.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
+        vRights.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
     }
     
     deinit{
-        NSNotificationCenter.defaultCenter().removeObserver(self, name:UIContentSizeCategoryDidChangeNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name:NSNotification.Name.UIContentSizeCategoryDidChange, object: nil)
     }
 }
